@@ -1,8 +1,8 @@
 # Eye of Rah Plan
 
 ## Group Members
-Svante Ericsson [svasim1](https:://github.com/svasim1)
-Dennis Forslund [ABB22denfor](https://github.com/ABB2denfor)
+Svante Ericsson [svasim1](https://github.com/svasim1)<br>
+Dennis Forslund [ABB22denfor](https://github.com/ABB22denfor)
 
 ## Description
 COMING SOON
