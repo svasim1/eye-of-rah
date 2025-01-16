@@ -8,7 +8,7 @@ Dennis Forslund [ABB22denfor](https://github.com/ABB22denfor)
 Our website contains a background image of the "Eye of Rah" with accompanying text and an input field. 
 After guessing the correct "password" the user is sent to another page with a LeBron James background with a heart and a click counter. 
 
-![eye-of-rah image](./images/eye-of-rah.png)
+![eye-of-rah image](./images/eye-of-rah.jpg)
 
 ## How to Solve
 COMING SOON
