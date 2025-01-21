@@ -9,8 +9,10 @@ Our website contains a background image of the "Eye of Rah" with accompanying te
 After guessing the correct password, the user is sent to another page with a LeBron James background with a heart and a click counter. 
 The key will be displayed on the page after correct user input.
 
-<img src="./images/eye-of-rah.jpg" alt="eye-of-rah image" width="300"/>
-<img src="./images/lebonbon.png" alt="LeBron image" width="300"/>
+<div style="text-align: center;">
+    <img src="./images/eye-of-rah.jpg" alt="eye-of-rah image" width="300"/>
+    <img src="./images/lebonbon.png" alt="LeBron image" width="300"/>
+</div>
 
 ## Solution
 <details>
