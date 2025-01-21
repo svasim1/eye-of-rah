@@ -18,7 +18,7 @@ The key will be displayed on the page after correct user input.
 
     The user should use SQL injection to solve the first page and get the password, with a command similar to SELECT password FROM brainrot WHERE meme = eye-of-rah
     
-    The second page is solved by reaching 69420 clicks using web devtools as help
+    The second page is solved by reaching the same number of clicks as LeBrons career points tally, using web devtools as help
 </details>
 
 
