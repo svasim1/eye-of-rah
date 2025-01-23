@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script lang="ts">
 	import '../../app.css';
 	let { children } = $props();
@@ -5,3 +6,4 @@
 
 {@render children()}
 
+<slot><!-- optional fallback --></slot>
