@@ -1,5 +1,7 @@
 <div id="background-container" 
-  style="position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  style="position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  transition:fireRing={{duration: 1000}}
+>
   <div id="background-overlay"
     style="background: rgba(0,0,0,0.4) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute">
   </div>
@@ -17,7 +19,7 @@
     <div id="input-form"  style="z-index: 2; width: 30rem; border-radius: 0.5rem; height:100vh;
     display: flex; justify-content: center; align-items: center; flex-direction: column">
       <form method="post" class="mb-1" style="width: 25rem; display: flex; justify-content: space-around; align-items: center; flex-direction: row"
-        novalidate >
+        novalidate use:enhance={()=>{handleSuccess()}}>
 
         <input id="input" name="password" type="text" placeholder="Enter password..." 
           style="width: 20rem; padding: 0.3rem 0.5rem; border-radius: 0.5rem; background-color: white; border: solid black 2px;" required>
@@ -38,5 +40,17 @@
 
 <script>
   import background from "$lib/assets/eye-of-rah-bg.jpg"
+  import {fireRing} from '$lib/transitions/pageTransition.js'
+  import {goto} from '$app/navigation'
+  import {enhance} from '$app/forms'
   export let form
+
+
+  function handleSuccess(){ 
+      setTimeout(()=>{
+        if(form?.success)
+          goto('/second', {replaceState: true})
+      }, 1000)
+  }
+
 </script>

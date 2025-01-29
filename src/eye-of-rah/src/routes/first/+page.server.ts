@@ -12,8 +12,7 @@ export const actions = {
     console.log('Form data received:', { password });
 
     (password === "Eye Of Rah") ? success = true : success = false;
-
-    return {success: success}
+    return {success: success};
   }
 };
 
