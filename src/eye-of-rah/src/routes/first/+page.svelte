@@ -17,8 +17,9 @@
     </div>
 
     <div id="input-form"  style="z-index: 2; width: 30rem; border-radius: 0.5rem; height:100vh;
-    display: flex; justify-content: center; align-items: center; flex-direction: column">
-      <form method="post" class="mb-1" style="width: 25rem; display: flex; justify-content: space-around; align-items: center; flex-direction: row"
+    display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative">
+      <form method="post" class="mb-1" style="width: 25rem; display: flex; justify-content: space-around; align-items: center; flex-direction: row;
+      position: absolute"
         novalidate use:enhance={()=>{handleSuccess()}}>
 
         <input id="input" name="password" type="text" placeholder="Enter password..." 
@@ -27,11 +28,11 @@
         <button style="background-color: blue; padding: 0.3rem 0.5rem; border-radius: 0.5rem; border: solid black 2px;" class="text-white font-md">Submit</button>
       </form>
       {#if form?.success === true}
-          <p class="text-green-500 self-center font-medium">SUCCESS!</p>
+          <p class="text-green-500 self-center font-medium absolute top-85">SUCCESS!</p>
       {:else if form?.success === false}
-          <p class="text-red-500 self-start ml-12 font-medium" >WRONG PASSWORD!</p>
+          <p class="text-red-500 self-start ml-12 font-medium absolute top-85" >WRONG PASSWORD!</p>
       {:else if form?.error}
-          <p class="text-red-500 self-start ml-12 font-medium">MUST ENTER A PASSWORD!</p>
+          <p class="text-red-500 self-start ml-12 font-medium absolute top-85">MUST ENTER A PASSWORD!</p>
       {/if}
     </div>
   </div>
