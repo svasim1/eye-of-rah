@@ -1,7 +1,3 @@
-<script>
-  import background from "$lib/assets/lebron-bg.jpg";
-</script>
-
 <div id="container" style="position: relative; width: 100vw; height: 100vh; display: flex; user-select: none;">
   <div
     id="background"
@@ -30,46 +26,76 @@
     <div
       id="clicker"
       style=" z-index:1; position: absolute;"
+      on:click={()=>{updateCounter(1)}}
     >
       <div
         id="clicker-counter"
-        class="text-7xl font-bold ml-45 mt-28"
-        style="color: white; position: absolute; z-index: 2"
+        class="text-7xl font-bold mt-28"
+        style={clickerCounterStyle}
       >
-        0
+        {counter}
       </div>
     </div>
   </div>
+
+  {#if displayFlag == true}
+    <p class="text-xs z-2" style="color: red">{flag}</p>
+  {/if}
 </div>
 
+<script lang="ts">
+  import background from "$lib/assets/lebron-bg.jpg";
+
+  const goal: number = 10;
+  let counter: number = 0;
+
+  let displayFlag: bool = false;
+
+  let clickerCounterStyle: string = "color: white; position: absolute; z-index: 2; margin-left: 11rem;";
+
+  let flag: string = "CTF220S{Very Secret Flag}";
+
+  function updateCounter(step: number = 1){
+    if(counter < goal)
+      counter += step;
+    ((goal - counter) < 1) ? handleSuccess() : console.log("");
+  }
+
+  function handleSuccess(){
+    clickerCounterStyle = "color: white; position: absolute; z-index: 2; margin-left: 10rem;";
+    
+    displayFlag = true;
+  }
+
+</script>
 
 <style>
-        #clicker {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
+  #clicker {
+      position: relative;
+      width: 400px;
+      height: 400px;
+  }
 
-        #clicker::before,
-        #clicker::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 320px;
-            background: red;
-            border: 8px solid black;
-            border-radius: 200px 200px 0 0;
-        }
+  #clicker::before,
+  #clicker::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 320px;
+      background: red;
+      border: 8px solid black;
+      border-radius: 200px 200px 0 0;
+  }
 
-        #clicker::before {
-            left: 200px;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
-        }
+  #clicker::before {
+      left: 200px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+  }
 
-        #clicker::after {
-            left: 0;
-            transform: rotate(45deg);
-            transform-origin: 100% 100%;
-        }
+  #clicker::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+  }
 </style>
