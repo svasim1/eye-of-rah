@@ -24,6 +24,9 @@
 		"vite": "^5.4.11"
 	},
 	"dependencies": {
+		"svelte-audio": "^1.0.1",
+		"svelte-dnd-action": "^0.9.57",
+		"svelte-drag": "^3.1.0",
 		"svelte-sound": "^0.6.0"
 	}
 }
