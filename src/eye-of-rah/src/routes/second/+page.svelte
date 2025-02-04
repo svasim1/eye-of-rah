@@ -6,26 +6,24 @@
   </div>
   <div
     id="background-overlay"
-    style="background: rgba(0,0,0,0.15) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute"
+    style="background: rgba(0,0,0,0.15) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute;"
   >
   </div>
   <div 
     id="text-container"
-    class="flex flex-row justify-start items-start size-128 mt-48 ml-42"
-    style="position: absolute; z-index: 1;"
+    class="flex flex-row justify-start items-start size-128 mt-48 ml-42 z-2 absolute"
   >
-    <h1 class="text-6xl font-bold" style="color: white">
+    <h1 class="text-6xl font-bold" style="color: white;">
       Show your love for LeBron
     </h1>
   </div>
   <div
     id="clicker-container"
-    class="flex flex-row justify-center items-center mt-98 ml-424"
-    style="position: absolute"
+    class="flex flex-row justify-center items-center mt-98 ml-424 absolute"
   >
     <div
       id="clicker"
-      style=" z-index:1; position: absolute;"
+      style="z-index:1; position: absolute;"
       on:click={()=>{updateCounter(1)}}
     >
       <div
@@ -39,7 +37,7 @@
   </div>
 
   {#if displayFlag == true}
-    <p class="text-xs z-2" style="color: red">{flag}</p>
+    <p class="text-xs z-2" style="color: red;">{flag}</p>
   {/if}
 </div>
 
