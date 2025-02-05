@@ -4,6 +4,8 @@
   import { goto } from "$app/navigation";
   import { enhance } from "$app/forms";
   import { sound } from "svelte-sound";
+  import { onMount } from "svelte";
+  import initSqlJs from 'sql.js';
   export let form;
 
   let gongAudio;
@@ -22,6 +24,27 @@
       }
     }, 5000);
   }
+
+  onMount(async () => {
+      const SQL = await initSqlJs({locateFile: () => `https://sql.js.org/dist/sql-wasm.wasm`});
+
+      const db = new SQL.Database();
+
+      db.run(`CREATE TABLE login (id INTEGER PRIMARY KEY, name TEXT, password TEXT)`);
+
+      db.run(`INSERT INTO login (name, password) VALUES ('user1','eye-of-rah'), ('Admin', 'admin')`);
+
+      const res = db.exec("SELECT * FROM login");
+      console.log(res);
+
+      if(typeof localStorage !== 'undefined'){
+        const data = db.export();
+        localStorage.setItem('lebonbondb', JSON.stringify(Array.from(data)));
+      } else{
+        console.warn("localStorage is not available in this environment");
+      }
+  })
+  
 </script>
 
 <div
