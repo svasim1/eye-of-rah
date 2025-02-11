@@ -1,17 +1,33 @@
+let savedPasswordsCache: string;
+let correctPassword: string;
+
 export const actions = {
   default: async ({ request }) => {
     const formData = await request.formData();
     const password = formData.get('password');
-    let success
+    const savedPasswordsString = formData.get("savedPasswords");
 
+    console.log(typeof savedPasswordsString)
+    if(savedPasswordsString != null){
+      savedPasswordsCache = savedPasswordsString;
+    }
+
+    const savedPasswordsArr = savedPasswordsCache.split(",");
+    
     if (!password) {
       return { error: 'All fields are required.' };
     }
 
-    // Simulate processing (e.g., saving to a database)
-    console.log('Form data received:', { password });
+    if (savedPasswordsArr == null){
+      return { error: 'Passwords not defined in SQL'};
+    }
 
-    (password === "Eye Of Rah") ? success = true : success = false;
+    correctPassword = savedPasswordsArr[1];
+
+    let success;
+    (password === correctPassword) ? success = true : success = false;
+
     return {success: success};
   }
 };
+

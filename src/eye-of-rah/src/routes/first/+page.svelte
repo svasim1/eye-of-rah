@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import background from "$lib/assets/eye-of-rah-bg.jpg";
   import { fireRing } from "$lib/transitions/pageTransition.js";
   import { goto } from "$app/navigation";
@@ -9,12 +9,14 @@
   export let form;
 
   let gongAudio;
+  let savedPasswords: Array = [];
 
   if (typeof window !== "undefined") {
     gongAudio = new Audio("/gong.mp3");
   }
 
   function handleSuccess() {
+    submitSavedPasswords()
     setTimeout(() => {
       if (form?.success) {
         if (gongAudio) {
@@ -35,7 +37,10 @@
       db.run(`INSERT INTO login (name, password) VALUES ('user1','eye-of-rah'), ('Admin', 'admin')`);
 
       const res = db.exec("SELECT * FROM login");
-      console.log(res);
+
+      res[0].values.forEach((user) => {
+        savedPasswords.push(user[2]);
+      })  
 
       if(typeof localStorage !== 'undefined'){
         const data = db.export();
@@ -44,6 +49,19 @@
         console.warn("localStorage is not available in this environment");
       }
   })
+
+  async function submitSavedPasswords(){
+      const formData = new FormData();
+
+      formData.append('savedPasswords', savedPasswords);
+
+      const res = await fetch("/first", {
+          method: 'POST',
+          body: formData
+      });
+
+      const data = await res.json(); 
+  }
   
 </script>
 
@@ -102,8 +120,10 @@
 
         <button
           style="background-color: blue; padding: 0.3rem 0.5rem; border-radius: 0.5rem; border: solid black 2px;"
-          class="text-white font-md">Submit</button
+          class="text-white font-md"
         >
+          Submit
+        </button>
       </form>
       {#if form?.success === true}
         <p class="text-green-500 self-center font-medium absolute top-85">
