@@ -7,7 +7,6 @@ export const actions = {
     const password = formData.get('password');
     const savedPasswordsString = formData.get("savedPasswords");
 
-    console.log(typeof savedPasswordsString)
     if(savedPasswordsString != null){
       savedPasswordsCache = savedPasswordsString;
     }
