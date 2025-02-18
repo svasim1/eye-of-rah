@@ -1,12 +1,12 @@
 <div id="container" style="position: relative; width: 100vw; height: 100vh; display: flex; user-select: none;">
   <div
     id="background"
-    style="background: url({background}) no-repeat center center; width: 100vw; height: 100vh; background-size: 100vw 100vh; position: absolute;"
+    style={backgroundStyle}
   >
   </div>
   <div
     id="background-overlay"
-    style="background: rgba(0,0,0,0.15) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute;"
+    style={backgroundOverlayStyle}
   >
   </div>
   <div 
@@ -37,19 +37,23 @@
   </div>
 
   {#if displayFlag == true}
-    <p class="text-xs z-2" style="color: red;">{flag}</p>
+    <p class="text-xs z-2" style="color: lightgrey;">{flag}</p>
   {/if}
 </div>
 
 <script lang="ts">
   import background from "$lib/assets/lebron-bg.jpg";
+  import successBackground from "$lib/assets/lebron-success-bg.jpg"
+
+  let backgroundStyle = `background: url(${background}) no-repeat center center; width: 100vw; height: 100vh; background-size: 100vw 100vh; position: absolute;`;
+  let backgroundOverlayStyle = "background: rgba(0,0,0,0.15) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute;";
+  let clickerCounterStyle: string = "color: white; position: absolute; z-index: 2; margin-left: 11rem;";
 
   const goal: number = 10;
   let counter: number = 0;
 
   let displayFlag: bool = false;
 
-  let clickerCounterStyle: string = "color: white; position: absolute; z-index: 2; margin-left: 11rem;";
 
   let flag: string = "CTF220S{Very Secret Flag}";
 
@@ -61,6 +65,8 @@
 
   function handleSuccess(){
     clickerCounterStyle = "color: white; position: absolute; z-index: 2; margin-left: 10rem;";
+    backgroundStyle = `background: url(${successBackground}) no-repeat center center; width: 100vw; height: 100vh; background-size: 100vw 100vh; position: absolute;`;
+    backgroundOverlayStyle = "background: rgba(0,0,0,0) no-repeat center center; width:100vw; height: 100vh; z-index: 1; position: absolute;"
     
     displayFlag = true;
   }
