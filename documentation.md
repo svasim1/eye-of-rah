@@ -43,7 +43,7 @@ The key will be displayed on the page after correct user input.
 
 <details>
     <summary>SPOILERS</summary>
-    <p>CTF220s{...}</p>
+    <p>CTF220s{L3b0nb0n_my_sunsh1n3}</p>
 </details>
 
 ## Reflection
